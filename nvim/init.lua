@@ -711,8 +711,14 @@ do
   --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
+  ---
+  
+  vim.opt.rtp:prepend(vim.fn.expand("~/.opam/default/share/ocp-indent/vim"))
   local servers = {
     gopls = {},
+    ocamllsp = {},
+
+    clangd = {},
     pyright = {},
     rust_analyzer = {},
     --
@@ -720,7 +726,7 @@ do
     --    https://github.com/pmizio/typescript-tools.nvim
     --
     -- But for many setups, the LSP (`ts_ls`) will work just fine
-    -- ts_ls = {},
+    ts_ls = {},
 
     stylua = {}, -- Used to format Lua code
 
