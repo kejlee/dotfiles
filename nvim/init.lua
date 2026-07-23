@@ -144,6 +144,11 @@ do
   -- Enable break indent
   vim.o.breakindent = true
 
+  vim.o.tabstop = 2      -- how wide a literal tab renders
+  vim.o.shiftwidth = 2   -- indent width for >>, <<, autoindent, and LSP formatting
+  vim.o.softtabstop = 2  -- how far Tab/Backspace move in insert mode
+  vim.o.expandtab = true -- insert spaces instead of tab characters
+
   -- Enable undo/redo changes even after closing and reopening a file
   vim.o.undofile = true
 
@@ -717,10 +722,10 @@ do
   
   vim.opt.rtp:prepend(vim.fn.expand("~/.opam/default/share/ocp-indent/vim"))
   local servers = {
-    gopls = {},
-    ocamllsp = {},
 
-    clangd = {},
+    -- ocamllsp = {} installed via opam
+    -- clangd = {} installed via apt
+
     pyright = {},
     rust_analyzer = {},
     --
