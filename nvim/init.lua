@@ -723,8 +723,8 @@ do
   vim.opt.rtp:prepend(vim.fn.expand("~/.opam/default/share/ocp-indent/vim"))
   local servers = {
 
-    -- ocamllsp = {} installed via opam
-    -- clangd = {} installed via apt
+    ocamllsp = {}, --installed via opam
+    clangd = {}, -- installed via apt
 
     pyright = {},
     rust_analyzer = {},
@@ -771,6 +771,7 @@ do
       },
     },
   }
+  local system_provided = { clangd = true, ocamllsp = true }
 
   vim.pack.add {
     gh 'neovim/nvim-lspconfig',
@@ -789,10 +790,11 @@ do
   --    :Mason
   --
   -- You can press `g?` for help in this menu.
-  local ensure_installed = vim.tbl_keys(servers or {})
-  vim.list_extend(ensure_installed, {
-    -- You can add other tools here that you want Mason to install
-  })
+  
+  local ensure_installed = {}
+  for name in pairs(servers) do
+    if not system_provided[name] then table.insert(ensure_installed, name) end
+  end
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
