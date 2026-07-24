@@ -725,6 +725,8 @@ do
 
     ocamllsp = {}, --installed via opam
     clangd = {}, -- installed via apt
+    jdtls = {},
+
 
     pyright = {},
     rust_analyzer = {},
