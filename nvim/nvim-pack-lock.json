@@ -14,6 +14,10 @@
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "diffview.nvim": {
+      "rev": "62dc5adf4e77489a2a6d3bf36ef6e4ac5738b634",
+      "src": "https://www.github.com/dlyongemallo/diffview.nvim"
+    },
     "fidget.nvim": {
       "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
       "src": "https://github.com/j-hui/fidget.nvim"
@@ -55,6 +59,10 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "project.nvim": {
+      "rev": "a36481a56abfe54eba4b96bc56a88bc387e197c7",
+      "src": "https://www.github.com/DrKJeff16/project.nvim"
+    },
     "telescope-fzf-native.nvim": {
       "rev": "b25b749b9db64d375d782094e2b9dce53ad53a40",
       "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
@@ -74,6 +82,18 @@
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim"
+    },
+    "vim-easy-align": {
+      "rev": "9815a55dbcd817784458df7a18acacc6f82b1241",
+      "src": "https://github.com/junegunn/vim-easy-align"
+    },
+    "vim-slime": {
+      "rev": "2cfdc3b24e7ebaa64f5a1a04b00555600c622b79",
+      "src": "https://www.github.com/jpalardy/vim-slime"
+    },
+    "vim-surround": {
+      "rev": "3d188ed2113431cf8dac77be61b842acb64433d9",
+      "src": "https://www.github.com/tpope/vim-surround"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
