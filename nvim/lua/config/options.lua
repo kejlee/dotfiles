@@ -2,6 +2,12 @@
 -- SECTION 1: OPTIONS
 -- Core Neovim settings, leaders, options, basic keymaps, basic autocmds
 -- ============================================================
+
+-- Enable faster startup by caching compiled Lua modules
+vim.loader.enable()
+
+local o = vim.opt
+
 -- clipboard stuff
 vim.g.clipboard = {
   name = "win32yank",
@@ -15,8 +21,6 @@ vim.g.clipboard = {
   },
   cache_enabled = 0,
 }
--- Enable faster startup by caching compiled Lua modules
-vim.loader.enable()
 
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -30,9 +34,9 @@ vim.g.have_nerd_font = false
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.showmode = false
+o.number = true
+o.relativenumber = true
+o.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -41,35 +45,35 @@ vim.o.showmode = false
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
-vim.o.breakindent = true
+o.breakindent = true
 
-vim.o.tabstop = 2      -- how wide a literal tab renders
-vim.o.shiftwidth = 2   -- indent width for >>, <<, autoindent, and LSP formatting
-vim.o.softtabstop = 2  -- how far Tab/Backspace move in insert mode
-vim.o.expandtab = true -- insert spaces instead of tab characters
+o.tabstop = 2      -- how wide a literal tab renders
+o.shiftwidth = 2   -- indent width for >>, <<, autoindent, and LSP formatting
+o.softtabstop = 2  -- how far Tab/Backspace move in insert mode
+o.expandtab = true -- insert spaces instead of tab characters
 
 -- Enable undo/redo changes even after closing and reopening a file
-vim.o.undofile = true
+o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
-vim.o.smartcase = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.o.signcolumn = 'yes'
+o.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+o.updatetime = 250
 
 -- Decrease mapped sequence wait time
-vim.o.timeoutlen = 300
+o.timeoutlen = 300
 
 -- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
+o.splitright = true
+o.splitbelow = true
 
 -- disable swap files
-vim.o.swapfile = false
+o.swapfile = false
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -79,20 +83,20 @@ vim.o.swapfile = false
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-guide-options`
-vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+o.list = true
+o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
-vim.o.inccommand = 'split'
+o.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.o.cursorline = true
+o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+o.scrolloff = 10
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-vim.o.confirm = true
+o.confirm = true
 
