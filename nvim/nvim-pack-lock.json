@@ -87,6 +87,14 @@
       "rev": "9815a55dbcd817784458df7a18acacc6f82b1241",
       "src": "https://github.com/junegunn/vim-easy-align"
     },
+    "vim-latex-live-preview": {
+      "rev": "9973568fc7275f70a4277d474821284128850034",
+      "src": "https://www.github.com/xuhdev/vim-latex-live-preview"
+    },
+    "vim-markdown": {
+      "rev": "1bc9d0cd8e1cc3e901b0a49c2b50a843f1c89397",
+      "src": "https://www.github.com/preservim/vim-markdown"
+    },
     "vim-slime": {
       "rev": "2cfdc3b24e7ebaa64f5a1a04b00555600c622b79",
       "src": "https://www.github.com/jpalardy/vim-slime"
@@ -94,6 +102,10 @@
     "vim-surround": {
       "rev": "3d188ed2113431cf8dac77be61b842acb64433d9",
       "src": "https://www.github.com/tpope/vim-surround"
+    },
+    "vimtex": {
+      "rev": "c1b96604d9a387cde5a98bec8f6687ae3078b571",
+      "src": "https://www.github.com/lervag/vimtex"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
