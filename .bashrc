@@ -138,6 +138,8 @@ export NVM_DIR="$HOME/.nvm"
 
 eval $(opam env)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(zoxide init bash)"
+
 export PATH="$PATH:/opt/nvim/bin"
 
 export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
