@@ -1,6 +1,6 @@
 # Kenny's Dotfiles
 
-Ubuntu and WSL as my coding environment
+[Ubuntu](https://ubuntu.com/download) within [WSL](https://github.com/microsoft/WSL) as my coding environment
 
 [neovim](https://github.com/neovim/neovim) as my text editor
 
