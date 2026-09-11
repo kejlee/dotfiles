@@ -141,6 +141,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init bash)"
 
 export PATH="$PATH:/opt/nvim/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
 export VISUAL="/home/linuxbrew/.linuxbrew/bin/nvim"
