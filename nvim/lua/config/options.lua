@@ -8,20 +8,24 @@ vim.loader.enable()
 
 local o = vim.opt
 
--- clipboard stuff
-vim.g.clipboard = {
-  name = "WslClipboard",
-  copy = {
-    ["+"] = "clip.exe",
-    ["*"] = "clip.exe",
-  },
-  paste = {
-    ['+'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-    ['*'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-
-  },
-  cache_enabled = 0,
-}
+-- Clipboard.
+-- WSLg provides a Wayland clipboard ($WAYLAND_DISPLAY) that is bridged to the Windows
+-- clipboard. With wl-clipboard installed (`brew install wl-clipboard`) Neovim picks up
+-- wl-copy/wl-paste by itself, so no g:clipboard is needed and no Windows process is
+-- spawned on every yank or paste.
+-- Only if wl-clipboard is missing, fall back to Windows tools. Never use
+-- `powershell.exe Get-Clipboard` for paste: starting PowerShell through WSL interop can
+-- block for a minute or more, which freezes Neovim on every `p`.
+if vim.fn.has('wsl') == 1 and vim.fn.executable('wl-copy') == 0 then
+  local paste = vim.fn.executable('win32yank.exe') == 1 and 'win32yank.exe -o --lf'
+    or 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = { ['+'] = 'clip.exe', ['*'] = 'clip.exe' },
+    paste = { ['+'] = paste, ['*'] = paste },
+    cache_enabled = 0,
+  }
+end
 
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '

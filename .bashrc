@@ -145,3 +145,29 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export EDITOR="/home/linuxbrew/.linuxbrew/bin/nvim"
 export VISUAL="/home/linuxbrew/.linuxbrew/bin/nvim"
+
+# ---- WSL: keep Windows interop usable inside tmux ---------------------------------
+# Every tmux pane inherits WSL_INTEROP from the Windows Terminal tab that started the
+# tmux server. Once that tab is closed the socket is gone, and any Windows program
+# (clip.exe, powershell.exe, wsl.exe, code) blocks forever instead of failing fast.
+# Before each prompt, re-point WSL_INTEROP at the newest live session socket.
+# The common case is a single stat() call. Run `wsl_interop_refresh force` to jump to
+# the newest socket even if the current one still exists.
+if [ -n "$WSL_DISTRO_NAME" ]; then
+  wsl_interop_refresh() {
+    [ "${1:-}" != force ] && [ -S "${WSL_INTEROP:-}" ] && return 0
+    local s newest=
+    for s in /run/WSL/*_interop; do
+      { [ -S "$s" ] && [ ! -L "$s" ]; } || continue
+      if [ -z "$newest" ] || [ "$s" -nt "$newest" ]; then newest=$s; fi
+    done
+    [ -n "$newest" ] && export WSL_INTEROP=$newest
+    return 0
+  }
+  wsl_interop_refresh
+  if [[ "$(declare -p PROMPT_COMMAND 2>/dev/null)" == "declare -a"* ]]; then
+    PROMPT_COMMAND=(wsl_interop_refresh "${PROMPT_COMMAND[@]}")
+  elif [[ ";${PROMPT_COMMAND:-};" != *";wsl_interop_refresh;"* ]]; then
+    PROMPT_COMMAND="wsl_interop_refresh${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+  fi
+fi
