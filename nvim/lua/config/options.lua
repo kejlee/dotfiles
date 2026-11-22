@@ -18,7 +18,7 @@ local o = vim.opt
 -- block for a minute or more, which freezes Neovim on every `p`.
 if vim.fn.has('wsl') == 1 and vim.fn.executable('wl-copy') == 0 then
   local paste = vim.fn.executable('win32yank.exe') == 1 and 'win32yank.exe -o --lf'
-    or 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))'
+    or 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`M", ""))'
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = { ['+'] = 'clip.exe', ['*'] = 'clip.exe' },
