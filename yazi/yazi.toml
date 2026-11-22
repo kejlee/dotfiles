@@ -11,6 +11,9 @@ show_hidden = true
 show_symlink = true
 scrolloff = 100
 
+# prepend_keymap = [
+#   {on = "<C-->", run = "hardlink", desc = "hardlink yanked files"},
+# ]
 
 [preview]
 
